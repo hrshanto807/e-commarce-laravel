@@ -10,10 +10,12 @@ class ProductReview extends Model
 
 
     protected $fillable = [
+        "user_id",
         'product_id',
-        'user_id',
-        'rating',
-        'description',
+        'customer_id',
+        "rating",
+        "description",
+       
     ];
 
     public function profile():BelongsTo
