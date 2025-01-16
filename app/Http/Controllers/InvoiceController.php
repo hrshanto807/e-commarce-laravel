@@ -102,4 +102,27 @@ class InvoiceController extends Controller
             return ResponseHelper::Out('fail', $e->getMessage(), 200);
         }
     }
+
+
+    // payment system
+
+    public function PaymentSuccess(Request $request)
+    {
+            
+        return SSLCommerz::InitiateSuccess($request->query('tran_id'));     
+    }
+
+    public function PaymentFail(Request $request)
+    {
+       return SSLCommerz::InitiateFail($request->query('tran_id'));      
+    }   
+
+    public function PaymentCancel(Request $request)
+    {
+        return SSLCommerz::InitiateCancel($request->query('tran_id'));  
+    } 
+    
+    public function PaymentIPN(Request $request){
+        return SSLCommerz::InitiateIPN($request->input('tran_id'),$request->input('status'),$request->input('val_id'));
+    }
 }
