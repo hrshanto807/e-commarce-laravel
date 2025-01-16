@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Middleware\TokenAuthenticate;
+use App\Http\Controllers\InvoiceController;
 
 
 Route::get('/', function () {
@@ -54,3 +55,9 @@ Route::get('/RemoveWishList/{product_id}',[ProductController::class,'RemoveWishL
 Route::post('/CreateCartList',[ProductController::class,'CreateCartList'])->middleware([TokenAuthenticate::class]);
 Route::get('/ProductCartList',[ProductController::class,'ProductCartList'])->middleware([TokenAuthenticate::class]);    
 Route::get('/RemoveCartList/{product_id}',[ProductController::class,'RemoveCartList'])->middleware([TokenAuthenticate::class]);
+
+// invoice 
+
+Route::get('/CreateInvoice',[InvoiceController::class,'CreateInvoice'])->middleware([TokenAuthenticate::class]);
+Route::get('/ReadInvoice',[InvoiceController::class,'ReadInvoice'])->middleware([TokenAuthenticate::class]);
+Route::get('/InvoiceProductDetails/{invoice_id}',[InvoiceController::class,'InvoiceProductDetails'])->middleware([TokenAuthenticate::class]);

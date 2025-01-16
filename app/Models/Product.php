@@ -38,4 +38,11 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+   
+    public function productCart()
+    {
+        return $this->hasMany(ProductCart::class);
+    }
 }
+
+

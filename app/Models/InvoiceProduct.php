@@ -14,11 +14,11 @@ class InvoiceProduct extends Model
 
     // Fillable fields for mass assignment
     protected $fillable = [
-        'invoice_id',
-        'product_id',
-        'user_id',
-        'qty',
-        'sale_price'
+        "invoice_id",
+        "product_id",
+        "user_id",
+        "qty",
+        "sale_price"
     ];
 
 
