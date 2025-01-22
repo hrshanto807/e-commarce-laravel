@@ -15,6 +15,22 @@ use App\Models\ProductCart;
 
 class ProductController extends Controller
 {
+   // page controller
+
+   public function ByCategory(){
+
+      return view ('pages.category-page');
+      
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
    //  product category
    function ProductListByCategory(Request $request){
    $data = Product::where('category_id',$request->id)->with('brand')->with('category')->get();

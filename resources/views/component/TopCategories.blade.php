@@ -26,7 +26,7 @@
                 <div class="item">
                     <div class="categories_box">
                         <a href="/by-category?id=${item['id']}">
-                            <img src="${item['categoryImg']}" alt="cat_img1"/>
+                            <img src="${item['categoryImg']}" style="width:100%; height:150px;object-fit:cover" alt="cat_img1"/>
                             <span>${item['categoryName']}</span>
                         </a>
                     </div>
