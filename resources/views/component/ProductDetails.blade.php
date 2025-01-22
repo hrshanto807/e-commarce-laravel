@@ -136,7 +136,7 @@
 
 
     async function productReview(){
-        let res = await axios.get("/ListReviewByProduct/"+id);
+        let res = await axios.get("/ListProductByReview/"+id);
         let Details=await res.data['data'];
 
         $("#reviewList").empty();

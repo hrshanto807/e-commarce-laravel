@@ -19,8 +19,22 @@ class ProductController extends Controller
 
    public function ByCategory(){
 
-      return view ('pages.category-page');
-      
+      return view ('pages.product-by-category');      
+   }
+   public function ByBrand(){
+
+      return view ('pages.product-by-brand');      
+   }
+
+   public function ProductDetailsPage(){
+      return view('pages.details-page');
+   }
+
+   public function ProductCartPage(){
+      return view('pages.cart-list-page');
+   }
+   public function ProductWishPage(){
+      return view('pages.wish-list-page');
    }
    
    

@@ -11,15 +11,22 @@ use App\Http\Controllers\PolicyController;
 use App\Http\Middleware\TokenAuthenticate;
 use App\Http\Controllers\InvoiceController;
 
-
+// page route
 Route::get('/',[HomeController::class,'HomePage']);
+Route::get('/by-category',[ProductController::class,'ByCategory']);
+Route::get('/by-brand',[ProductController::class,'ByBrand']);
+Route::get('/policy',[PolicyController::class,'PolicyPage']);
+Route::get('/details',[ProductController::class,'ProductDetailsPage']);
+Route::get('/login',[UserController::class,'LoginPage']);
+Route::get('/verify', [UserController::class,'VerifyPage']);
+Route::get('/cart', [ProductController::class,'ProductCartPage']);
+Route::get('/wish', [ProductController::class,'ProductWishPage']);
 
-Route::post('/login', [UserController::class,'UserLogin']);
 
+
+// web api
 Route::get("/BrandList",[BranController::class,'BrandList']);
 Route::get("/CategoryList",[CategoryController::class,'CategoryList']);
-
-
 Route::get('/ListProductByCategory/{id}',[ProductController::class,'ProductListByCategory']);
 Route::get('/ListProductByBrand/{id}',[ProductController::class,'ProductListByBrand']);
 Route::get('/ListProductByRemark/{remark}',[ProductController::class,'ProductListByRemark']);
@@ -29,7 +36,7 @@ Route::get('/ListProductByReview/{id}',[ProductController::class,'ProductListByR
 
 
 Route::get('/userLogin/{UserEmail}',[UserController::class,'UserLogin']);
-Route::get('/userLoginOtp/{UserEmail}/{OTP}',[UserController::class,'VerifyLogin']);
+Route::get('/VerifyLogin/{UserEmail}/{OTP}',[UserController::class,'VerifyLogin']);
 Route::get('/logout',[UserController::class,'UserLogout']);
 
 
@@ -45,13 +52,13 @@ Route::get('/ReadProfile',[ProfileController::class,'ReadProfile'])->middleware(
 Route::post('/CreateProductReview',[ProductController::class,'CreateProductReview'])->middleware([TokenAuthenticate::class]);
 
 // wish list
-Route::get('/CreateWishList',[ProductController::class,'CreateWishList'])->middleware([TokenAuthenticate::class]);
-Route::get('/ProductWishList/{product_id}',[ProductController::class,'ProductWishList'])->middleware([TokenAuthenticate::class]);   
+Route::get('/CreateWishList/{product_id}',[ProductController::class,'CreateWishList'])->middleware([TokenAuthenticate::class]);
+Route::get('/ProductWishList',[ProductController::class,'ProductWishList'])->middleware([TokenAuthenticate::class]);   
 Route::get('/RemoveWishList/{product_id}',[ProductController::class,'RemoveWishList'])->middleware([TokenAuthenticate::class]);
 
 // cart list
 
-Route::post('/CreateCartList',[ProductController::class,'CreateCartList'])->middleware([TokenAuthenticate::class]);
+Route::post('/CreateCartList', [ProductController::class, 'CreateCartList'])->middleware([TokenAuthenticate::class]);
 Route::get('/ProductCartList',[ProductController::class,'ProductCartList'])->middleware([TokenAuthenticate::class]);    
 Route::get('/RemoveCartList/{product_id}',[ProductController::class,'RemoveCartList'])->middleware([TokenAuthenticate::class]);
 
@@ -66,3 +73,7 @@ Route::get('/InvoiceProductDetails/{invoice_id}',[InvoiceController::class,'Invo
 Route::post('/PaymentSuccess',[InvoiceController::class,'PaymentSuccess']);
 Route::post('/PaymentFail',[InvoiceController::class,'PaymentFail']);
 Route::post('/PaymentCancel',[InvoiceController::class,'PaymentCancel']);
+
+
+// policy route
+Route::get('/PolicyByType/{type}',[PolicyController::class,'PolicyByType']);

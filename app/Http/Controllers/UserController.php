@@ -15,6 +15,13 @@ use App\Helpers\JWTToken;
 
 class UserController extends Controller
 {
+
+    public function LoginPage(){
+        return view('pages.login-page');
+    }
+    public function VerifyPage(){
+        return view('pages.verify-page');
+    }
     public function UserLogin(Request $request):JsonResponse
     {
         try {
@@ -25,7 +32,7 @@ class UserController extends Controller
             User::updateOrCreate(['email' => $UserEmail], ['email'=>$UserEmail,'otp'=>$OTP]);
             return ResponseHelper::Out('success',"A 6 Digit OTP has been send to your email address",200);
         } catch (Exception $e) {
-            return ResponseHelper::Out('fail',$e,200);
+            return ResponseHelper::Out('fail',$e->getMessage(),200);
         }
     }
 

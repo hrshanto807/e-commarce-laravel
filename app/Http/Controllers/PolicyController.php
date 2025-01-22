@@ -10,4 +10,8 @@ class PolicyController extends Controller
     function PolicyByType(Request $request){
        return Policy::where('type', $request->type)->first();
     }
+
+    public function PolicyPage(){
+        return view('pages.policy-page');
+    }
 }
