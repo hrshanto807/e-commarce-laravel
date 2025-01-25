@@ -39,6 +39,7 @@ class UserController extends Controller
 
     public function VerifyLogin(Request $request):JsonResponse
     {
+         try{
             $UserEmail=$request->UserEmail;
             $OTP=$request->OTP;
 
@@ -52,6 +53,11 @@ class UserController extends Controller
             else{
                 return  ResponseHelper::Out('fail',null,401);
             }
+         }catch(Exception $e){
+            return  ResponseHelper::Out('fail',$e->getMessage(),401);
+
+         }
+         
     }
 
     function UserLogout(){

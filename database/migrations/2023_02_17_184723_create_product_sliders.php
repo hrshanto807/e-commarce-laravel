@@ -11,12 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('policies', function (Blueprint $table) {
+        Schema::create('product_sliders', function (Blueprint $table) {
             $table->id();
+            $table->string('title',200);
+            $table->string('short_des',500);
+            $table->string('price',100);
+            $table->string('image',200);
 
-            $table->enum('type',['about','refund','terms','how to buy','contact','complain']);
-            
-            $table->longText('des');
+            $table->unsignedBigInteger('product_id')->unique();
+            $table->foreign('product_id')->references('id')->on('products')
+                ->restrictOnDelete()
+                ->restrictOnUpdate();
 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('policies');
+        Schema::dropIfExists('product_sliders');
     }
 };

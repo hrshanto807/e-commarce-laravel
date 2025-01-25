@@ -6,27 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
 
-            $table->string('brandName',50);
-            $table->string('brandImg',300);
-            
+            $table->string('categoryName',50);
+            $table->string('categoryImg',300);
+
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('categories');
     }
 };

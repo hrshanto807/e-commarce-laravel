@@ -15,18 +15,22 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('invoice_id');
-            $table->foreign('invoice_id')->references('id')->on('invoices')->restrictOnDelete()->restrictOnUpdate();
-
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products')->restrictOnDelete()->restrictOnUpdate();    
-
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->restrictOnUpdate();
 
-          
             $table->string('qty',50);
             $table->string('sale_price',50);
 
+
+            $table->foreign('invoice_id')->references('id')->on('invoices')
+                ->cascadeOnUpdate()->restrictOnDelete();
+
+            $table->foreign('product_id')->references('id')->on('products')
+                ->cascadeOnUpdate()->restrictOnDelete();
+
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->cascadeOnUpdate()->restrictOnDelete();
 
 
             $table->timestamp('created_at')->useCurrent();
