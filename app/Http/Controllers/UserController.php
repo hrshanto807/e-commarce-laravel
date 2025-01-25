@@ -22,6 +22,10 @@ class UserController extends Controller
     public function VerifyPage(){
         return view('pages.verify-page');
     }
+
+    public function ProfilePage(){
+        return view('pages.profile-page');
+    }
     public function UserLogin(Request $request):JsonResponse
     {
         try {

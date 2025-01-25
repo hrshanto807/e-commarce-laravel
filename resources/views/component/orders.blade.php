@@ -57,7 +57,7 @@
 
 
     async function OrderListRequest() {
-        let res= await axios.get("/InvoiceList");
+        let res= await axios.get("/ReadInvoice");
         let json=res.data
 
         $("#OrderList").empty();
@@ -92,7 +92,7 @@
    async function InvoiceProductList(id) {
 
        $(".preloader").delay(90).fadeIn(100).removeClass('loaded');
-       let res= await axios.get("/InvoiceProductList/"+id);
+       let res= await axios.get("/InvoiceProductDetails/"+id);
        $("#InvoiceProductModal").modal('show');
        $(".preloader").delay(90).fadeOut(100).addClass('loaded');
 

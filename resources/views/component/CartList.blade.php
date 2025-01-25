@@ -108,13 +108,12 @@
         }
     }
 
-
     async function CheckOut(){
         $(".preloader").delay(90).fadeIn(100).removeClass('loaded');
 
         $("#paymentList").empty();
 
-        let res=await axios.get("/InvoiceCreate");
+        let res=await axios.get("/CreateInvoice");
 
         $(".preloader").delay(90).fadeOut(100).addClass('loaded');
 
@@ -131,6 +130,7 @@
                             </tr>`
                 $("#paymentList").append(EachItem);
             })
+            
 
         }
         else{
@@ -138,6 +138,9 @@
         }
 
     }
+
+
+
 
 
 

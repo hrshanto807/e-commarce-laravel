@@ -19,8 +19,10 @@ Route::get('/policy',[PolicyController::class,'PolicyPage']);
 Route::get('/details',[ProductController::class,'ProductDetailsPage']);
 Route::get('/login',[UserController::class,'LoginPage']);
 Route::get('/verify', [UserController::class,'VerifyPage']);
+Route::get('/profile', [UserController::class,'ProfilePage']);
 Route::get('/cart', [ProductController::class,'ProductCartPage']);
 Route::get('/wish', [ProductController::class,'ProductWishPage']);
+
 
 
 
